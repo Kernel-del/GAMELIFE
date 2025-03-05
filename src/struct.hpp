@@ -1,0 +1,1 @@
+char STRUCT_glider[] = "01n001n111e";
