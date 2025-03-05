@@ -6,3 +6,5 @@
 - **Для Linux**: `make`
 - **Для Windows 64-bit**: `make win64`
 - **Для Windows 32-bit**: `make win32`
+
+***Вывод на windows работает нестабильно***
