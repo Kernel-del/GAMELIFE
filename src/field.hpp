@@ -4,17 +4,20 @@
 class Line {
     private:
         int x = 0;
-        std::vector<short> arr;
+        std::vector<bool> arr;
     public:
-        Line(int x, short value): x(x), arr(x, value) {}
-        short& operator[](int index) {
+        Line(int x, bool value): x(x), arr(x, value) {}
+        std::vector<bool>::reference operator[](int index) {
             int real_index = (index < 0) ? ((index % x + x) % x) : (index % x);
             return arr[real_index];
         }
-        
+        std::vector<bool>::const_reference operator[](int index) const {
+            int real_index = (index < 0) ? ((index % x + x) % x) : (index % x);
+            return arr[real_index];
+        }
 
-        std::vector<short>::const_iterator begin() {return arr.begin(); }
-        std::vector<short>::const_iterator end() {return arr.end(); }
+        std::vector<bool>::const_iterator begin() {return arr.begin(); }
+        std::vector<bool>::const_iterator end() {return arr.end(); }
 };
 
 
@@ -25,7 +28,7 @@ class Field {
         std::vector<Line> arr;
     public:
         Field() {}
-        Field(int x, int y, short value): x(x), y(y), arr(y, Line(x, value)) {}
+        Field(int x, int y, bool value): x(x), y(y), arr(y, Line(x, value)) {}
 
         Line& operator [] (int index) {
             int real_index = (index < 0) ? ((index % y + y) % y) : (index % y);
@@ -51,8 +54,7 @@ class Field {
             for (int iy = 0; iy < y; ++iy) {
                 for (int ix = 0; ix < x; ++ix) {
                     std::cin >> tmp;
-                    switch (tmp)
-                    {
+                    switch (tmp) {
                     case '0':
                         (*this)[iy][ix] = 0;
                         break;
@@ -68,7 +70,20 @@ class Field {
                     case 'e':
                         ix=x; iy=y;
                         break;
-                    
+                    case 'w':
+                        --iy; --ix;
+                        break;
+                    case 'a':
+                        ----ix;
+                        break;
+                    case 's':
+                        ++iy; --ix;
+                        break;
+                    case 'd':
+                        break;
+                    case '\0':
+                        ix=x; iy=y;
+                        break;
                     default:
                         break;
                     }
@@ -83,8 +98,7 @@ class Field {
 
             for (int iy = 0; iy < y; ++iy) {
                 for (int ix = 0; ix < x; ++ix, ++i) {
-                    switch (str[i])
-                    {
+                    switch (str[i]) {
                     case '0':
                         (*this)[iy][ix] = 0;
                         break;
@@ -99,6 +113,17 @@ class Field {
                         break;
                     case 'e':
                         ix=x; iy=y;
+                        break;
+                    case 'w':
+                        --iy; --ix;
+                        break;
+                    case 'a':
+                        ----ix;
+                        break;
+                    case 's':
+                        ++iy; --ix;
+                        break;
+                    case 'd':
                         break;
                     case '\0':
                         ix=x; iy=y;

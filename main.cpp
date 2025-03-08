@@ -46,7 +46,7 @@ int main() {
 
     term_clear();
 
-    for (int i = 1; 1; ++i) {
+    for (int i = 1; true; ++i) {
         game.step();
 
         loin_home();
@@ -55,7 +55,7 @@ int main() {
         std::cout << LANG_MOVE_COUNTER << i << "     \n";
         std::this_thread::sleep_for(std::chrono::milliseconds(150));
 
-        if (i%120==0) {term_clear();}
+        if (i%30==0) {term_clear();}
     }
 
     return 0;
