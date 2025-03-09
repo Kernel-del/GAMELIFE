@@ -1,16 +1,16 @@
 #include "../import_lib.hpp"
 
 
-const char* LANG_SET_SIZE = "Введите, через пробел, размеры поля(x, y): ";
+const char* LANG_SET_SIZE = "Введите, через пробел, размеры поля(x, y): "; // Выбор размера игрового поля
 
-const char* LANG_CHOSEN_MAP = 
+const char* LANG_CHOSEN_MAP = // Выбор режима
     "Выберите карту:"
         "\n\t0. Системные карты"
         "\n\t1. Своя карта"
         "\n\t2. Рандом"
         "\nНапишите номер карты: ";
 
-const char* LANG_RULES_CREATING_MAP = 
+const char* LANG_RULES_CREATING_MAP =  // Правила создание своей карты
     "Правила:"
         "\n\tПоставь блок:"
             "\n\t\t0 - пустота"
@@ -26,9 +26,9 @@ const char* LANG_RULES_CREATING_MAP =
             "\n\t\te - досрочное завершение"
     "\nВписывайте карту(удачи):\n";
 
-const char* LANG_MOVE_COUNTER = "\nХод ";
+const char* LANG_MOVE_COUNTER = "\nХод "; // Вывод хода
 
-const char* LANG_CHOSEN_SYSTEM_MAP = 
+const char* LANG_CHOSEN_SYSTEM_MAP =  // Выбор каарты по умолчанию
     "Выберите карту:"
         "\n\t1. glider"
         "\n\t2. butterfly"
@@ -36,17 +36,17 @@ const char* LANG_CHOSEN_SYSTEM_MAP =
         "\n\t4. gluider gun"
     "\nНапишите номер карты: ";
 
-const char* LANG_STYLE_ACT = "██";
-const char* LANG_STYLE_INACT = "░░";
+const char* LANG_STYLE_ACT = "██"; // Активированная ячейка
+const char* LANG_STYLE_INACT = "░░"; // Не активированная ячейка
 
-void SetLocale() {
+void SetLocale() { // Установка языка (на всякий пожарный)
     setlocale(LC_ALL, "ru_RU");
 }
 
-void term_clear() {
+void term_clear() { // Полная очистка терминала
     std::cout << "\x1B[2J\x1B[H";
 }
 
-void loin_home() {
+void loin_home() { // Перенос коретки в начало строки
     std::cout << "\x1B[H";
 }

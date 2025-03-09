@@ -1,7 +1,7 @@
 #include "import_lib.hpp"
 
 
-class Line {
+class Line { // Класс обработки выхода за пределы массива
     private:
         int x = 0;
         std::vector<bool> arr;
@@ -16,12 +16,13 @@ class Line {
             return arr[real_index];
         }
 
+        // Для удобной работы с циклом for(auto i: Line)
         std::vector<bool>::const_iterator begin() {return arr.begin(); }
         std::vector<bool>::const_iterator end() {return arr.end(); }
 };
 
 
-class Field {
+class Field { // Класс поля
     private:
         int y = 0;
         int x = 0;
@@ -35,9 +36,11 @@ class Field {
             return arr[real_index];
         }
 
+        // Для удобной работы с циклом for(auto i: Line)
         std::vector<Line>::const_iterator begin() {return arr.begin(); }
         std::vector<Line>::const_iterator end() {return arr.end(); }
 
+        // рандомное заполнение поля
         Field& randow_fill(float act_perc) {
             for (int iy = 0; iy < y; ++iy) {
                 for (int ix = 0; ix < x; ++ix) {
@@ -48,6 +51,7 @@ class Field {
             return *this;
         }
 
+        // Обработка входящих клавиш
         Field& player_input() {
             char tmp;
 
@@ -93,6 +97,7 @@ class Field {
             return *this;
         }
 
+        // Обработка входящей строки
         Field& sys_input(char* str) {
             int i = 0;
 

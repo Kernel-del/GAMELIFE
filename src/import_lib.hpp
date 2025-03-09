@@ -6,7 +6,7 @@
     #include <thread>
 
     #ifdef DEBUG
-        #ifdef LINUX //Очистка экрана
+        #ifdef LINUX // На всякий случай, при надобности
             std::cout << "Для linux\n";
         #else
             std::cout << "для windows\n";
@@ -14,8 +14,8 @@
     #endif
 
     #ifdef LINUX
-    #include "lang/ru-linux.hpp"
+    #include "lang/ru-linux.hpp" // Языковой пакет линуксоидов
     #else
-    #include "lang/ru-windows.hpp"
+    #include "lang/ru-windows.hpp" // Языковой пакет фортачников
     #endif
 #endif
