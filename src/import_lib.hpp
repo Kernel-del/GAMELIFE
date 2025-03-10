@@ -14,8 +14,10 @@
     #endif
 
     #ifdef LINUX
-    #include "lang/ru-linux.hpp" // Языковой пакет линуксоидов
+    #include "lang/linux.hpp" // Языковой пакет линуксоидов
     #else
-    #include "lang/ru-windows.hpp" // Языковой пакет фортачников
+    #include "lang/windows.hpp" // Языковой пакет фортачников
     #endif
+
+    #include "lang/Ru_ru.hpp"
 #endif

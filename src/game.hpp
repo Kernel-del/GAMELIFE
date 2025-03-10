@@ -1,6 +1,7 @@
 #include "import_lib.hpp"
 #include "field.hpp"
 
+// Обработка линии
 void step_line(Field& base, Field& tmp, int iy, int x, int y) {
     for (int ix = 0; ix < x; ++ix) {
         int health = 0;
