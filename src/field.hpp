@@ -27,6 +27,8 @@ class Field { // Класс поля
         int y = 0;
         int x = 0;
         std::vector<Line> arr;
+
+        int cy = -1; int cx = -1;
     public:
         Field() {}
         Field(int x, int y, bool value): x(x), y(y), arr(y, Line(x, value)) {}
@@ -59,37 +61,50 @@ class Field { // Класс поля
                 for (int ix = 0; ix < x; ++ix) {
                     std::cin >> tmp;
                     switch (tmp) {
-                    case '0':
-                        (*this)[iy][ix] = 0;
-                        break;
-                    case '1':
-                        (*this)[iy][ix] = 1;
-                        break;
-                    case 'n':
-                        ix=x;
-                        break;
-                    case 'r':
-                        ix=-1;
-                        break;
-                    case 'e':
-                        ix=x; iy=y;
-                        break;
-                    case 'w':
-                        --iy; --ix;
-                        break;
-                    case 'a':
-                        ----ix;
-                        break;
-                    case 's':
-                        ++iy; --ix;
-                        break;
-                    case 'd':
-                        break;
-                    case '\0':
-                        ix=x; iy=y;
-                        break;
-                    default:
-                        break;
+                        case ' ': // Ставит пустоту
+                            (*this)[iy][ix] = 0;
+                            break;
+                        case '0': // Ставит пустоту
+                            (*this)[iy][ix] = 0;
+                            break;
+                        case '1': // Ставит клетку
+                            (*this)[iy][ix] = 1;
+                            break;
+                        case 'n': // Перенос на новую строку
+                            ix=x;
+                            break;
+                        case 'h': // Перенос на нулевые координаты
+                            ix = -1; iy = 0;
+                            break;
+                        case 'r': // Перенос в начало строки
+                            ix=-1;
+                            break;
+                        case 'e': // Досрочное завершение
+                            ix=x; iy=y;
+                            break;
+                        case 'w': // Перемещение вверх
+                            --iy; --ix;
+                            break;
+                        case 'a': // Перемещение вправо
+                            ----ix;
+                            break;
+                        case 's': // Перемещение вниз
+                            ++iy; --ix;
+                            break;
+                        case 'd': // Перемещение вправо
+                            break;
+                        case 'c': // Скопировать положение коретки
+                            --ix;
+                            cy = iy; cx = ix;
+                            break;
+                        case 'p': // переместить коретку в точку копирования
+                            iy = cy; ix = cx;
+                            break;
+                        case '\0': // Досрочное завершение
+                            ix=x; iy=y;
+                            break;
+                        default: // Перемещение вправо
+                            break;
                     }
                 }
             }
@@ -104,37 +119,50 @@ class Field { // Класс поля
             for (int iy = 0; iy < y; ++iy) {
                 for (int ix = 0; ix < x; ++ix, ++i) {
                     switch (str[i]) {
-                    case '0':
-                        (*this)[iy][ix] = 0;
-                        break;
-                    case '1':
-                        (*this)[iy][ix] = 1;
-                        break;
-                    case 'n':
-                        ix=x;
-                        break;
-                    case 'r':
-                        ix=-1;
-                        break;
-                    case 'e':
-                        ix=x; iy=y;
-                        break;
-                    case 'w':
-                        --iy; --ix;
-                        break;
-                    case 'a':
-                        ----ix;
-                        break;
-                    case 's':
-                        ++iy; --ix;
-                        break;
-                    case 'd':
-                        break;
-                    case '\0':
-                        ix=x; iy=y;
-                        break;
-                    default:
-                        break;
+                        case ' ': // Ставит пустоту
+                            (*this)[iy][ix] = 0;
+                            break;
+                        case '0': // Ставит пустоту
+                            (*this)[iy][ix] = 0;
+                            break;
+                        case '1': // Ставит клетку
+                            (*this)[iy][ix] = 1;
+                            break;
+                        case 'n': // Перенос на новую строку
+                            ix=x;
+                            break;
+                        case 'h': // Перенос на нулевые координаты
+                            ix = -1; iy = 0;
+                            break;
+                        case 'r': // Перенос в начало строки
+                            ix=-1;
+                            break;
+                        case 'e': // Досрочное завершение
+                            ix=x; iy=y;
+                            break;
+                        case 'w': // Перемещение вверх
+                            --iy; --ix;
+                            break;
+                        case 'a': // Перемещение вправо
+                            ----ix;
+                            break;
+                        case 's': // Перемещение вниз
+                            ++iy; --ix;
+                            break;
+                        case 'd': // Перемещение вправо
+                            break;
+                        case 'c': // Скопировать положение коретки
+                            --ix;
+                            cy = iy; cx = ix;
+                            break;
+                        case 'p': // переместить коретку в точку копирования
+                            iy = cy; ix = cx;
+                            break;
+                        case '\0': // Досрочное завершение
+                            ix=x; iy=y;
+                            break;
+                        default: // Перемещение вправо
+                            break;
                     }
                 }
             }
@@ -147,37 +175,50 @@ class Field { // Класс поля
             for (int iy = 0; iy < y; ++iy) {
                 for (int ix = 0; ix < x; ++ix, ++i) {
                     switch (str[i]) {
-                    case '0':
-                        (*this)[iy][ix] = 0;
-                        break;
-                    case '1':
-                        (*this)[iy][ix] = 1;
-                        break;
-                    case 'n':
-                        ix=x;
-                        break;
-                    case 'r':
-                        ix=-1;
-                        break;
-                    case 'e':
-                        ix=x; iy=y;
-                        break;
-                    case 'w':
-                        --iy; --ix;
-                        break;
-                    case 'a':
-                        ----ix;
-                        break;
-                    case 's':
-                        ++iy; --ix;
-                        break;
-                    case 'd':
-                        break;
-                    case '\0':
-                        ix=x; iy=y;
-                        break;
-                    default:
-                        break;
+                        case ' ': // Ставит пустоту
+                            (*this)[iy][ix] = 0;
+                            break;
+                        case '0': // Ставит пустоту
+                            (*this)[iy][ix] = 0;
+                            break;
+                        case '1': // Ставит клетку
+                            (*this)[iy][ix] = 1;
+                            break;
+                        case 'n': // Перенос на новую строку
+                            ix=x;
+                            break;
+                        case 'h': // Перенос на нулевые координаты
+                            ix = -1; iy = 0;
+                            break;
+                        case 'r': // Перенос в начало строки
+                            ix=-1;
+                            break;
+                        case 'e': // Досрочное завершение
+                            ix=x; iy=y;
+                            break;
+                        case 'w': // Перемещение вверх
+                            --iy; --ix;
+                            break;
+                        case 'a': // Перемещение вправо
+                            ----ix;
+                            break;
+                        case 's': // Перемещение вниз
+                            ++iy; --ix;
+                            break;
+                        case 'd': // Перемещение вправо
+                            break;
+                        case 'c': // Скопировать положение коретки
+                            --ix;
+                            cy = iy; cx = ix;
+                            break;
+                        case 'p': // переместить коретку в точку копирования
+                            iy = cy; ix = cx;
+                            break;
+                        case '\0': // Досрочное завершение
+                            ix=x; iy=y;
+                            break;
+                        default: // Перемещение вправо
+                            break;
                     }
                 }
             }

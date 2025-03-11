@@ -28,15 +28,15 @@ int main() {
             if (chosen_map==0) {break;
             } if (chosen_map==1) { // Комната №4.0 - выбор стандартных карт
                 std::cout<<lang::CHOSEN_SYSTEM_MAP; // Выберите карту
-                for (int i = 0; i < sizeof(default_maps)/sizeof(default_maps[0]); ++i) {
+
+                for (int i = 0; i < sizeof(default_maps)/sizeof(default_maps[0]); ++i) { // Вывщд стандартных карт
                     std::cout<<'\t'<<i+1<<". "<<default_maps[i].name<<'\n';
                 }
-                std::cout<<lang::INPUT;
-
+                std::cout<<lang::INPUT; // Ввод: 
                 std::cin >> chosen_map;
                 
-                if (chosen_map==0) {continue;
-                } else if (chosen_map>sizeof(default_maps)/sizeof(default_maps[0])) { continue;
+                if (chosen_map<=0) {continue; // Обратно
+                } else if (chosen_map>sizeof(default_maps)/sizeof(default_maps[0])) { continue; // тоже самое
                 } else {game.getField().sys_input(default_maps[chosen_map-1].code); };
 
 
