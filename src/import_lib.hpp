@@ -4,6 +4,7 @@
     #include <vector>
     #include <chrono>
     #include <thread>
+    #include <string>
 
     #ifdef DEBUG
         #ifdef LINUX // На всякий случай, при надобности

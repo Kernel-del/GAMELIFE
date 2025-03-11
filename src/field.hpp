@@ -141,4 +141,47 @@ class Field { // Класс поля
 
             return *this;
         }
+        Field& sys_input(std::string str) {
+            int i = 0;
+
+            for (int iy = 0; iy < y; ++iy) {
+                for (int ix = 0; ix < x; ++ix, ++i) {
+                    switch (str[i]) {
+                    case '0':
+                        (*this)[iy][ix] = 0;
+                        break;
+                    case '1':
+                        (*this)[iy][ix] = 1;
+                        break;
+                    case 'n':
+                        ix=x;
+                        break;
+                    case 'r':
+                        ix=-1;
+                        break;
+                    case 'e':
+                        ix=x; iy=y;
+                        break;
+                    case 'w':
+                        --iy; --ix;
+                        break;
+                    case 'a':
+                        ----ix;
+                        break;
+                    case 's':
+                        ++iy; --ix;
+                        break;
+                    case 'd':
+                        break;
+                    case '\0':
+                        ix=x; iy=y;
+                        break;
+                    default:
+                        break;
+                    }
+                }
+            }
+
+            return *this;
+        }
 };

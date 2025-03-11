@@ -29,10 +29,7 @@ namespace lang {
 
     const char* CHOSEN_SYSTEM_MAP =  // Выбор каарты по умолчанию
         "Выберите карту:"
-            "\n\t0. Вернуться в к выбору режима"
-            "\n\t1. glider"
-            "\n\t2. butterfly"
-            "\n\t3. living forever"
-            "\n\t4. gluider gun"
-        "\nНапишите номер карты: ";
+            "\n\t0. Вернуться в к выбору режима\n";
+    
+    const char* INPUT = "Ввод: ";
 }

@@ -28,27 +28,18 @@ int main() {
             if (chosen_map==0) {break;
             } if (chosen_map==1) { // Комната №4.0 - выбор стандартных карт
                 std::cout<<lang::CHOSEN_SYSTEM_MAP; // Выберите карту
+                for (int i = 0; i < sizeof(default_maps)/sizeof(default_maps[0]); ++i) {
+                    std::cout<<'\t'<<i+1<<". "<<default_maps[i].name<<'\n';
+                }
+                std::cout<<lang::INPUT;
+
                 std::cin >> chosen_map;
                 
-                if (chosen_map==0) {continue; }
+                if (chosen_map==0) {continue;
+                } else if (chosen_map>sizeof(default_maps)/sizeof(default_maps[0])) { continue;
+                } else {game.getField().sys_input(default_maps[chosen_map-1].code); };
 
-                switch (chosen_map)
-                {
-                case 1:
-                    game.getField().sys_input(STRUCT_glider);
-                    break;
-                case 2:
-                    game.getField().sys_input(STRUCT_butterfly);
-                    break;
-                case 3:
-                    game.getField().sys_input(STRUCT_living_forever);
-                    break;
-                case 4:
-                    game.getField().sys_input(STRUCT_glider_gub);
-                    break;
-                default:
-                    break;
-                }
+
             } else if(chosen_map==2) { // Комната №4.1 - создание своей карты
                 std::cout << lang::RULES_CREATING_MAP; // Правила
                 game.getField().player_input();
