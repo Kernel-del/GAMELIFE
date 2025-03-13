@@ -8,6 +8,10 @@ void SetLocale() { // Установка языка (на всякий пожа�
     setlocale(LC_ALL, "ru_RU");
 }
 
+void cursor_visibility(bool vision) {
+    std::cout << (vision ? "\33[?25h" : "\33[?25l"); // Скрывает курсор
+}
+
 void term_clear() { // Полная очистка терминала
     std::cout << "\x1B[2J\x1B[H";
 }

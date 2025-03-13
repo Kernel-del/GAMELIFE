@@ -1,12 +1,16 @@
 #include "src/import_lib.hpp"
 #include "src/game.hpp"
 #include "src/struct.hpp"
+#include "src/error.hpp"
 
 
 int main() {
     // Запуск
+    signal(SIGINT, error);
+
     int x = 0, y = 0, chosen_map;
     SetLocale(); // Устанавливаем кодировку из lang
+
 
     while (true) {
         // Комната №1
@@ -48,6 +52,8 @@ int main() {
 
             // Комната №5 - основной цикл
             term_clear();
+
+            cursor_visibility(0);
             for (int i = 1; true; ++i) {
                 game.step(); // Обработка поля
 
@@ -59,6 +65,7 @@ int main() {
 
                 if (i%30==0) {term_clear();} // Во избежание артифактов, вызванных изменением размера терминала
             }
+            cursor_visibility(1);
         }
     }
 

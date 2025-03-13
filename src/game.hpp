@@ -45,12 +45,14 @@ class Game{
 
         // Вывод содержимого основной карты
         void print() {
+            std::string frame(x*y*2, '\0');
             for (auto i: base[selector]) {
                 for (auto j: i) {
-                    std::cout << (j ? LANG_STYLE_ACT : LANG_STYLE_INACT);
+                    frame.append(j ? LANG_STYLE_ACT : LANG_STYLE_INACT);
                 }
-                std::cout << '\n';
+                frame.append("\n");
             }
+            std::cout << frame;
         }
 
         // Получение ссылки на основное поле

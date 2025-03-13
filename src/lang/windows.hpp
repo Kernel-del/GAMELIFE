@@ -11,6 +11,14 @@ void SetLocale() { // Установка языка (на всякий пожа�
     setlocale(LC_ALL, "ru_RU.UTF-8");
 }
 
+void cursor_visibility(bool vision) {
+    static const HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO cci;
+    GetConsoleCursorInfo(handle, &cci);
+    cci.bVisible = vision; // show/hide cursor
+    SetConsoleCursorInfo(handle, &cci);
+}
+
 void term_clear() { // Полная очистка терминала
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     if (hConsole == INVALID_HANDLE_VALUE) return;
